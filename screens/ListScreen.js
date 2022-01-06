@@ -35,8 +35,8 @@ export default function ListScreen({ navigation }) {
         onDelete={onDelete}
         itemSelect={itemSelect}
       />
-      {/* <AddItem setTextInput={setTextInput} onAdd={onAdd} /> */}
-      <ListItem list={list} onHandlerModal={onHandlerModal} />
+      <AddItem setTextInput={setTextInput} onAdd={onAdd} />
+      <ListItem list={list} onHandlerModal={onHandlerModal} showDelete={true} />
     </View>
   );
 }

@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
-// import ListScreen from "./ListScreen";
 import Card from "../components/Card";
 import Header from "../components/Header";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useNavigation } from "@react-navigation/native";
+import ListItem from "../components/ListItem";
 
-export default function HomeScreen() {
-  const navigation = useNavigation();
+export default function HomeScreen( props ) {
+  // const navigation = useNavigation();
+
+  const { navigation, list } = props;
+  const [modalVisible, setModalVisible] = useState(false);
+  const [itemSelect, setItemSelect] = useState({});
+
+  const onHandlerModal = (item) => {
+    setItemSelect(item);
+    setModalVisible(true);
+  };
 
   return (
     <View style={styles.screen}>
-      <Header title={"Menu principal"} />
+      {/* <Header title={"Menu principal"} /> */}
       <View style={styles.cardContainer}>
         <Card style={styles.card}>
-          <Text>Notas</Text>
+          <Text>Notas {typeof(list)}</Text>
+          {/* <ListItem list={list} onHandlerModal={onHandlerModal} showDelete={true} /> */}
           <View style={styles.buttonContainer}>
             <Button title="Nuevo"></Button>
             <Button title="Buscar"></Button>
@@ -29,7 +36,7 @@ export default function HomeScreen() {
         </Card>
         <Card style={styles.card}>
           <Text>Notas recientes</Text>
-          {/* <ListScreen /> */}
+          {/* <ListItem /> */}
         </Card>
       </View>
     </View>
@@ -41,8 +48,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   card: {
-    width: 300,
-    maxWidth: "80%",
+    // width: 300,
+    width: "90%",
     margin: 10,
     paddingVertical: 20,
     alignItems: "center",
@@ -54,10 +61,9 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   buttonContainer: {
-    width: "40%",
+    width: "70%",
     flexDirection: "row",
     justifyContent: "space-evenly",
-    width: "100%",
     marginTop: 20,
   },
 });

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button, FlatList } from "react-native";
 
 export default function ListItem(props) {
   const { list, onHandlerModal } = props;
+  const { showDelete } = props;
 
   return (
     <View style={styles.listContainer}>
@@ -12,7 +13,10 @@ export default function ListItem(props) {
           renderItem={(data) => (
             <View style={styles.listElement}>
               <Text>{data.item.value}</Text>
-              <Button onPress={() => onHandlerModal(data.item)} title="X" />
+              { showDelete ?
+                 (<Button onPress={() => onHandlerModal(data.item)} title="X" />) 
+                 : (<></>)
+              }
             </View>
           )}
           keyExtractor={(item) => item.id}

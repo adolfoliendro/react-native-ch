@@ -7,11 +7,11 @@ export default function AddItem(props) {
   return (
     <View style={styles.inputContainer}>
       <TextInput
-        placeholder="Escribir item"
+        placeholder="Escribir nota"
         style={styles.input}
         onChangeText={(text) => setTextInput(text)}
       />
-      <Button onPress={() => onAdd()} title="ADD" />
+      <Button onPress={() => onAdd()} title="Agregar" />
     </View>
   );
 }
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   input: {
     borderBottomColor: "black",
     borderBottomWidth: 1,
-    width: "90%",
+    width: "70%",
   },
   inputContainer: {
     flexDirection: "row",
